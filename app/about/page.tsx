@@ -67,20 +67,44 @@ const milestones = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-foreground text-background py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-primary font-medium text-sm uppercase tracking-wider">About Us</span>
-            <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight text-balance">
-              Your Trusted Insurance Partner Since 2010
-            </h1>
-            <p className="text-lg text-background/80 leading-relaxed">
-              ProCare Insurance Brokers has been serving Sri Lanka for over 15 years, providing expert insurance advice and comprehensive coverage options for individuals and businesses across the nation.
-            </p>
-          </div>
-        </div>
-      </section>
+{/* Hero Section */}
+<section className="relative overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <Image
+      src="/images/about-hero.png"
+      alt="About ProCare Insurance Brokers"
+      fill
+      priority
+      className="object-cover object-center"
+    />
+    {/* Overlay for text readability */}
+    <div className="absolute inset-0 bg-foreground/80" />
+    {/* Optional premium gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/75 to-foreground/40" />
+  </div>
+
+  {/* Content */}
+  <div className="relative py-16 lg:py-24">
+    <div className="container mx-auto px-4 lg:px-8">
+      <div className="max-w-3xl text-background">
+        <span className="text-primary font-medium text-sm uppercase tracking-wider">
+          About Us
+        </span>
+
+        <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight text-balance">
+          Your Trusted Insurance Partner Since 2010
+        </h1>
+
+        <p className="text-lg text-background/80 leading-relaxed">
+          ProCare Insurance Brokers has been serving Sri Lanka for over 15 years,
+          providing expert insurance advice and comprehensive coverage options for
+          individuals and businesses across the nation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Company Overview */}
       <section className="py-16 lg:py-24 bg-background">

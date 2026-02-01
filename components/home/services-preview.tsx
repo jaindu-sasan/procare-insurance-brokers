@@ -1,44 +1,26 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Heart, Activity, Car, Building2, Plane, Umbrella, ArrowRight } from "lucide-react"
+import { CheckCircle2, Users, Building2, ArrowRight } from "lucide-react"
 
-const services = [
+const categories = [
   {
-    icon: Heart,
-    title: "Life Insurance",
-    description: "Secure your family's financial future with comprehensive life coverage that adapts to your needs.",
-    href: "/services#life",
+    id: "personal",
+    title: "Personal Insurance",
+    description: "Life, Health, Vehicle, Travel and more — for individuals and families.",
+    icon: Users,
+    image: "/images/services-personal.jpg", // same image used in /services
+    points: ["Life & Health cover", "Motor protection", "Travel cover", "Family-friendly plans"],
+    href: "/services/personal",
   },
   {
-    icon: Activity,
-    title: "Health Insurance",
-    description: "Access quality healthcare without financial burden. Coverage for you and your entire family.",
-    href: "/services#health",
-  },
-  {
-    icon: Car,
-    title: "Vehicle Insurance",
-    description: "Complete protection for your vehicles with comprehensive and third-party liability options.",
-    href: "/services#vehicle",
-  },
-  {
+    id: "corporate",
+    title: "Corporate Insurance",
+    description: "Business protection, employee benefits, liability, property and operational risks.",
     icon: Building2,
-    title: "Business Insurance",
-    description: "Protect your business assets, employees, and operations with tailored commercial coverage.",
-    href: "/services#business",
-  },
-  {
-    icon: Plane,
-    title: "Travel Insurance",
-    description: "Travel with peace of mind. Coverage for medical emergencies, trip cancellation, and more.",
-    href: "/services#travel",
-  },
-  {
-    icon: Umbrella,
-    title: "General Insurance",
-    description: "Comprehensive coverage for property, liability, and other specialized insurance needs.",
-    href: "/services#general",
+    image: "/images/services-corporate.jpg", // same image used in /services
+    points: ["Business & property risk", "Employee benefits", "Liability solutions", "Tailored packages"],
+    href: "/services/corporate",
   },
 ]
 
@@ -48,47 +30,83 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">Our Services</span>
+          <span className="text-primary font-medium text-sm uppercase tracking-wider">
+            Our Services
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4 text-balance">
-            Comprehensive Insurance Solutions
+            Choose Your Insurance Category
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            We offer a wide range of insurance products to protect every aspect of your life and business. Explore our services and find the coverage that&apos;s right for you.
+            Explore Personal and Corporate insurance solutions. View coverage options and request a quote with expert guidance.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon
+        {/* Category Cards */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {categories.map((c) => {
+            const Icon = c.icon
             return (
-              <Card key={index} className="group hover:shadow-lg transition-shadow border-0 bg-background">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                    <Icon className="h-6 w-6 text-secondary" />
+              <div
+                key={c.id}
+                className="group relative overflow-hidden rounded-2xl border bg-background shadow-sm hover:shadow-xl transition-shadow"
+              >
+                {/* Image header */}
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={c.image || "/placeholder.svg"}
+                    alt={c.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                  {/* soft overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-transparent to-transparent" />
+                </div>
+
+                <div className="p-7">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground">{c.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{c.description}</p>
+                    </div>
+
+                    <div className="shrink-0 h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-secondary" />
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-muted-foreground leading-relaxed mb-4">
-                    {service.description}
-                  </CardDescription>
-                  <Link 
-                    href={service.href}
-                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                  >
-                    Learn more
-                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </CardContent>
-              </Card>
+
+                  <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                    {c.points.map((p) => (
+                      <div key={p} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5" />
+                        <p className="text-sm text-muted-foreground">{p}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    {/* Make both "View" buttons same primary color */}
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                      <Link href={c.href}>
+                        View {c.title} <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+
+                    <Button asChild size="lg" variant="outline" className="bg-transparent">
+                      <Link href={`/contact?category=${c.id}`}>Request Quote</Link>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* subtle hover ring */}
+                <div className="pointer-events-none absolute inset-0 ring-1 ring-transparent group-hover:ring-secondary/25 transition" />
+              </div>
             )
           })}
         </div>
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
             <Link href="/services">View All Services</Link>
           </Button>
         </div>
