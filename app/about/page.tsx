@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Target, Eye, Heart, Users, Award, Clock, CheckCircle } from "lucide-react"
+import CountUp from "@/components/ui/count-up"
 
 export const metadata: Metadata = {
   title: "About Us | ProCare Insurance Brokers",
@@ -67,44 +68,44 @@ const milestones = [
 export default function AboutPage() {
   return (
     <>
-{/* Hero Section */}
-<section className="relative overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <Image
-      src="/images/about-hero.png"
-      alt="About ProCare Insurance Brokers"
-      fill
-      priority
-      className="object-cover object-center"
-    />
-    {/* Overlay for text readability */}
-    <div className="absolute inset-0 bg-foreground/80" />
-    {/* Optional premium gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/75 to-foreground/40" />
-  </div>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/about-hero.png"
+            alt="About ProCare Insurance Brokers"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 bg-foreground/80" />
+          {/* Optional premium gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/75 to-foreground/40" />
+        </div>
 
-  {/* Content */}
-  <div className="relative py-16 lg:py-24">
-    <div className="container mx-auto px-4 lg:px-8">
-      <div className="max-w-3xl text-background">
-        <span className="text-primary font-medium text-sm uppercase tracking-wider">
-          About Us
-        </span>
+        {/* Content */}
+        <div className="relative py-16 lg:py-24">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-3xl text-background">
+              <span className="text-primary font-medium text-sm uppercase tracking-wider">
+                About Us
+              </span>
 
-        <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight text-balance">
-          Your Trusted Insurance Partner Since 2010
-        </h1>
+              <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight text-balance">
+                Your Trusted Insurance Partner Since 2010
+              </h1>
 
-        <p className="text-lg text-background/80 leading-relaxed">
-          ProCare Insurance Brokers has been serving Sri Lanka for over 15 years,
-          providing expert insurance advice and comprehensive coverage options for
-          individuals and businesses across the nation.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+              <p className="text-lg text-background/80 leading-relaxed">
+                ProCare Insurance Brokers has been serving Sri Lanka for over 15 years,
+                providing expert insurance advice and comprehensive coverage options for
+                individuals and businesses across the nation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Company Overview */}
       <section className="py-16 lg:py-24 bg-background">
@@ -150,22 +151,43 @@ export default function AboutPage() {
               </div>
               <div className="bg-muted rounded-lg p-6 lg:p-8">
                 <div className="grid grid-cols-2 gap-6">
+
                   <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">15+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
+                      <CountUp end={15} suffix="+" />
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Years Experience
+                    </div>
                   </div>
+
                   <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">10K+</div>
-                    <div className="text-sm text-muted-foreground">Happy Clients</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
+                      <CountUp end={10000} suffix="+" />
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Happy Clients
+                    </div>
                   </div>
+
                   <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">50+</div>
-                    <div className="text-sm text-muted-foreground">Insurance Partners</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
+                      <CountUp end={50} suffix="+" />
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Insurance Partners
+                    </div>
                   </div>
+
                   <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">98%</div>
-                    <div className="text-sm text-muted-foreground">Claim Success Rate</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
+                      <CountUp end={98} suffix="%" />
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Claim Success Rate
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -312,9 +334,9 @@ export default function AboutPage() {
               <Button size="lg" asChild>
                 <Link href="/contact">Get a Free Quote</Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 asChild
                 className="border-background/30 text-background hover:bg-background hover:text-foreground bg-transparent"
               >

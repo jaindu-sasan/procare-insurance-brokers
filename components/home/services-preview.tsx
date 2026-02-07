@@ -9,7 +9,7 @@ const categories = [
     title: "Personal Insurance",
     description: "Life, Health, Vehicle, Travel and more — for individuals and families.",
     icon: Users,
-    image: "/images/services-personal.jpg", // same image used in /services
+    image: "/images/personal.png", // same image used in /services
     points: ["Life & Health cover", "Motor protection", "Travel cover", "Family-friendly plans"],
     href: "/services/personal",
   },
@@ -18,7 +18,7 @@ const categories = [
     title: "Corporate Insurance",
     description: "Business protection, employee benefits, liability, property and operational risks.",
     icon: Building2,
-    image: "/images/services-corporate.jpg", // same image used in /services
+    image: "/images/corporate.png", // same image used in /services
     points: ["Business & property risk", "Employee benefits", "Liability solutions", "Tailored packages"],
     href: "/services/corporate",
   },

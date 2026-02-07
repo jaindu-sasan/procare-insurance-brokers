@@ -28,8 +28,8 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="ProCare Insurance Brokers"
-                width={180}
-                height={70}
+                width={250}
+                height={100}
                 className="h-16 w-auto brightness-0 invert"
               />
             </Link>

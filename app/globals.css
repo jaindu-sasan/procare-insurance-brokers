@@ -119,7 +119,35 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* =========================================
+   Single-lane vehicle animation (fixed)
+========================================= */
+@keyframes drive-left-to-right {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.animate-drive {
+  animation: drive-left-to-right 6s linear forwards;
 }
