@@ -44,37 +44,40 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/images/contact-hero.png"
-            alt="Contact ProCare Insurance"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-foreground/80"></div>
-        </div>
+     <section className="relative overflow-hidden min-h-[80vh]">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src="/images/contact-hero.png"
+      alt="Contact ProCare Insurance"
+      className="w-full h-full object-cover"
+      style={{ objectPosition: "center top" }}
+    />
 
-        {/* Content */}
-        <div className="relative container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-          <div className="max-w-3xl text-background">
-            <span className="text-primary font-medium text-sm uppercase tracking-wider">
-              Contact Us
-            </span>
+    {/* Softer gradient overlay (instead of heavy black) */}
+    <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/45 to-foreground/20" />
+  </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight text-balance">
-              Get in Touch With Our Team
-            </h1>
+  {/* Content */}
+  <div className="relative container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+    <div className="max-w-3xl text-background">
+      <span className="text-primary font-medium text-sm uppercase tracking-wider">
+        Contact Us
+      </span>
 
-            <p className="text-lg text-background/80 leading-relaxed">
-              Have questions about insurance or need a quote? Our team of experts is here
-              to help. Fill out the form below or contact us directly through any of our
-              channels.
-            </p>
-          </div>
-        </div>
-      </section>
+      <h1 className="text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
+        Get in Touch With Our Team
+      </h1>
+
+      <p className="text-lg text-background/80 leading-relaxed">
+        Have questions about insurance or need a quote? Our team of experts is here
+        to help. Fill out the form below or contact us directly through any of our
+        channels.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
       {/* Contact Info Cards */}

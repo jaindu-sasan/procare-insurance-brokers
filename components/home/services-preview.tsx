@@ -65,20 +65,16 @@ export default function ServicesPreview() {
               >
 
                 {/* IMAGE (FULL COVER) */}
-                <div className="relative h-64 md:h-72 lg:h-80 w-full overflow-hidden">
+                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={c.image}
                     alt={c.title}
+                 
                     fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-                    className="
-                      object-cover
-                      object-center
-                      group-hover:scale-110
-                      transition-transform
-                      duration-500
-                    "
+                       className="object-cover object-top"
+                      priority={false}
+                    
+           
                   />
 
                   {/* Gradient overlay for better text contrast if needed */}
