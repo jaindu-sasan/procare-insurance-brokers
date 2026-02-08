@@ -16,7 +16,7 @@ const personalServices = [
     title: "Life Insurance",
     icon: Heart,
     image: "/images/service-life-insurance.jpg",
-    intro: "Protect your family’s future with flexible coverage and affordable options.",
+    intro: "Protect your family's future with flexible coverage and affordable options.",
     description: [
       "Life insurance provides a safety net that helps your loved ones stay financially secure if something happens to you.",
       "We compare plans from leading insurers and guide you to the best balance of protection and affordability.",
@@ -30,7 +30,7 @@ const personalServices = [
       "Policy options to suit your budget"
     ],
     suitableFor:
-      "Families, breadwinners, parents planning for children’s education, and anyone wanting long-term protection."
+      "Families, breadwinners, parents planning for children's education, and anyone wanting long-term protection."
   },
   {
     id: "health-insurance",
@@ -41,7 +41,7 @@ const personalServices = [
     description: [
       "Health insurance helps you manage unexpected medical costs — from minor care to major hospital bills.",
       "We help you choose coverage that matches your needs: hospitalization, outpatient options, and critical illness benefits.",
-      "Our team explains what’s covered so you can make confident decisions."
+      "Our team explains what's covered so you can make confident decisions."
     ],
     benefits: [
       "Hospitalization & surgical coverage",
@@ -101,8 +101,21 @@ export default function PersonalInsurancePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="bg-[#263238] text-white py-16 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative bg-[#263238] text-white py-16 lg:py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/download.webp" // Same background image as corporate page
+            alt="Personal Insurance Background"
+            fill
+            className="object-cover opacity-99"
+            priority
+          />
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#263238]/90 via-[#263238]/70 to-[#263238]/90"></div>
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <span className="text-secondary font-medium text-sm uppercase tracking-widest">
             Personal Insurance
           </span>
@@ -110,7 +123,7 @@ export default function PersonalInsurancePage() {
             Insurance for You & Your Family
           </h1>
           <p className="text-white/80 max-w-3xl">
-            Browse services below. Expand a service to see full details and request a quote.
+            Browse personal services below. Expand to see full details and request a quote.
           </p>
 
           <div className="mt-6 flex gap-3 flex-wrap">
@@ -134,7 +147,7 @@ export default function PersonalInsurancePage() {
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition"
+                  className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-lg bg-secondary/10 flex items-center justify-center">
@@ -142,7 +155,7 @@ export default function PersonalInsurancePage() {
                     </div>
                     <div>
                       <p className="font-semibold">{s.title}</p>
-                      <p className="text-sm text-muted-foreground line-clamp-1">{s.intro}</p>
+                      {/* Removed the intro line from quick cards to match corporate style */}
                     </div>
                   </div>
                 </a>
@@ -152,11 +165,11 @@ export default function PersonalInsurancePage() {
         </div>
       </section>
 
-      {/* Details accordions (same page) */}
+      {/* Details accordions - Changed to type="multiple" with all items open by default */}
       <section className="pb-16 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="multiple" defaultValue={personalServices.map(s => s.id)} className="space-y-4">
               {personalServices.map((s) => {
                 const Icon = s.icon
                 return (

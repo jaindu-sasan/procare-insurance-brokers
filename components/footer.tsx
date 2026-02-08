@@ -30,10 +30,10 @@ export default function Footer() {
                 alt="ProCare Insurance Brokers"
                 width={180}
                 height={70}
-                className="h-16 w-auto brightness-0 invert"
+                className="h-16 w-auto "
               />
             </Link>
-            <p className="text-sm text-background/70 mb-6 leading-relaxed">
+            <p className="text-sm text-background/80 mb-6 leading-relaxed">
               Your trusted partner for comprehensive insurance solutions in Sri Lanka. Protecting what matters most since 2010.
             </p>
             {/* Social Links - Green icons only */}
@@ -42,7 +42,7 @@ export default function Footer() {
                 href="https://facebook.com/procareinsurance"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary/30 transition-colors text-secondary"
+                className="h-10 w-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary/40 hover:scale-110 transition-all duration-200 text-secondary"
                 aria-label="Facebook"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ export default function Footer() {
                 href="https://wa.me/94112345678"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary/30 transition-colors text-secondary"
+                className="h-10 w-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary/40 hover:scale-110 transition-all duration-200 text-secondary"
                 aria-label="WhatsApp"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {navigation.services.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-background/70 hover:text-background transition-colors">
+                  <Link href={item.href} className="text-sm text-background/70 hover:text-primary transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -136,10 +136,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} ProCare Insurance Brokers. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="text-sm text-background/60 hover:text-background transition-colors">
+            <Link href="/privacy" className="text-sm text-background/60 hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-background/60 hover:text-background transition-colors">
+            <Link href="/terms" className="text-sm text-background/60 hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </div>

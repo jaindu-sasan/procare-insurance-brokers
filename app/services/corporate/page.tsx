@@ -35,7 +35,7 @@ const corporateServices = [
     id: "group-medical",
     title: "Group Medical Insurance",
     icon: Users,
-    image: "/images/service-group-medical.jpg",
+    image: "/images/hero-health.jpg",
     intro: "Flexible employee medical plans that support retention and wellbeing.",
     description: [
       "Group medical insurance helps companies support staff with reliable healthcare access.",
@@ -55,7 +55,7 @@ const corporateServices = [
     id: "liability-coverage",
     title: "Liability Insurance",
     icon: Shield,
-    image: "/images/service-liability.jpg",
+    image: "/images/hero-business.jpg",
     intro: "Reduce exposure to third-party claims and legal costs.",
     description: [
       "Liability cover helps protect your business against third-party claims, damage, and legal expenses.",
@@ -77,8 +77,21 @@ export default function CorporateInsurancePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="bg-[#263238] text-white py-16 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative bg-[#263238] text-white py-16 lg:py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/download.webp" // Replace with your image path
+            alt="Corporate Insurance Background"
+            fill
+            className="object-cover opacity-99" // Adjust opacity as needed
+            priority
+          />
+          {/* Optional: Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#263238]/90 via-[#263238]/70 to-[#263238]/90"></div>
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
           <span className="text-secondary font-medium text-sm uppercase tracking-widest">
             Corporate Insurance
           </span>
@@ -110,7 +123,7 @@ export default function CorporateInsurancePage() {
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition"
+                  className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-lg bg-secondary/10 flex items-center justify-center">
@@ -118,7 +131,7 @@ export default function CorporateInsurancePage() {
                     </div>
                     <div>
                       <p className="font-semibold">{s.title}</p>
-                      <p className="text-sm text-muted-foreground line-clamp-1">{s.intro}</p>
+
                     </div>
                   </div>
                 </a>
@@ -132,7 +145,7 @@ export default function CorporateInsurancePage() {
       <section className="pb-16 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="multiple" defaultValue={corporateServices.map(s => s.id)} className="space-y-4">
               {corporateServices.map((s) => {
                 const Icon = s.icon
                 return (
