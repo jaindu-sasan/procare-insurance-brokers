@@ -75,7 +75,8 @@ export default function Header() {
             <span>+94 11 234 5678</span>
           </Link>
 
-          <Button asChild>
+          {/* Desktop Button with heartbeat effect using arbitrary animation */}
+          <Button asChild className="animate-[heartbeat_2s_ease-in-out_infinite] hover:animate-none hover:scale-105 transition-transform duration-200">
             <Link href="/contact">Get a Quote</Link>
           </Button>
         </div>
@@ -129,7 +130,8 @@ export default function Header() {
                 <span>+94 11 234 5678</span>
               </Link>
 
-              <Button asChild className="mt-4">
+              {/* Mobile Button with heartbeat effect using arbitrary animation */}
+              <Button asChild className="mt-4 animate-[heartbeat_2s_ease-in-out_infinite] hover:animate-none hover:scale-105 transition-transform duration-200">
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   Get a Quote
                 </Link>

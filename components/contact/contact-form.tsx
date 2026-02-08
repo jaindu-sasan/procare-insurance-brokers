@@ -43,7 +43,7 @@ export default function ContactForm() {
       }
 
       setStatus("success")
-      ;(e.target as HTMLFormElement).reset()
+        ; (e.target as HTMLFormElement).reset()
     } catch (error) {
       setStatus("error")
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.")
